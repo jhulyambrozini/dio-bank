@@ -1,3 +1,3 @@
 export const login = (): void => {
-    alert('Bem vinda!')
+    alert('Bem vinda ao Dio Bank!')
 }
