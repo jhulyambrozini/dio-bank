@@ -1,27 +1,28 @@
-import { ChakraProvider, Box, Container } from '@chakra-ui/react';
-import { Header } from './components/Header/Header';
+import { BrowserRouter } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
 
-import './App.css';
-import { Card } from './components/Card';
+import { Layout } from './components/Layout';
+
+import { UserContextProvider } from './context/UserContext';
+
+import { createLocalStorage, getAllLocalStorage } from './services/storage';
+
+import MainRoutes from './routes';
 
 function App() {
+  if (!getAllLocalStorage()) {
+    createLocalStorage();
+  }
   return (
-    <ChakraProvider>
-      <Box
-        minHeight="100vh"
-        backgroundColor="#454545"
-        padding="25px"
-        display={'flex'}
-        flexDir={'column'}
-        alignItems={'center'}
-        justifyContent={'center'}
-      >
-        <Container centerContent>
-          <Header />
-          <Card title="Faça o login" />
-        </Container>
-      </Box>
-    </ChakraProvider>
+    <BrowserRouter>
+      <UserContextProvider>
+        <ChakraProvider>
+          <Layout>
+            <MainRoutes />
+          </Layout>
+        </ChakraProvider>
+      </UserContextProvider>
+    </BrowserRouter>
   );
 }
 
