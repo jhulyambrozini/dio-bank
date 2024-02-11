@@ -23,6 +23,8 @@ e extendido por [Jhuly Ambrozini](https://github.com/jhulyambrozini)
 
     npm start
 
+4 - Para fazer login use no email: jhuly@email.com e senha: 123456
+
 #### Desafios 2
 
 [x] Crie os componentes referentes aos elementos na página inicial
